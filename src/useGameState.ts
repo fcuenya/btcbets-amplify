@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Bet, BetStatus, GameState } from "./types.d";
 import useBtcPrice from './useBtcPrice';
 
@@ -16,11 +16,9 @@ const useGameState = (): GameState => {
     const [betProcessingTimeout, setBetProcessingTimeout] = useState<number>(
         BET_PROCESSING_TIMEOUT
     );
-    const processingIntervalRef = useRef<NodeJS.Timeout>();
     const [betResolvingTimeout, setBetResolvingTimeout] = useState<number>(
         BET_RESOLVING_TIMEOUT
     );
-    const resolvingIntervalRef = useRef<NodeJS.Timeout>();
 
     useEffect(() => {
         // TODO: could use a reducer instead?
