@@ -9,14 +9,14 @@ type BetScoreProps = {
 };
 
 const BetScore = ({
-  betStatus,
+  // betStatus,
   userScore,
-  currentBet,
-  betProcessingTimeout,
-  betResolvingTimeout,
-}: BetScoreProps) => {
-  const isBetResolved =
-    betStatus == BetStatus.WINNER || betStatus == BetStatus.LOSER;
+}: // currentBet,
+// betProcessingTimeout,
+// betResolvingTimeout,
+BetScoreProps) => {
+  // const isBetResolved =
+  //   betStatus == BetStatus.WINNER || betStatus == BetStatus.LOSER;
 
   return (
     <div>
