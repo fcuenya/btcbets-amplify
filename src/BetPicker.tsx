@@ -11,8 +11,8 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
     betStatus == BetStatus.WINNER || betStatus == BetStatus.LOSER;
 
   return (
-    <div>
-      <div className="flex flex-row place-content-around">
+    <div className="flex place-content-around">
+      <div className="flex flex-row place-content-center gap-x-5">
         <button
           className="btn btn-primary w-28 h-28 rounded-full"
           disabled={betStatus != BetStatus.READY}
@@ -33,7 +33,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
                 d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
               />
             </svg>
-            <div>Bet lower</div>
+            <div className="ml-1">Low Guess</div>
           </div>
         </button>
         <button
@@ -48,17 +48,17 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="size-6"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M12 4.5v15m7.5-7.5h-15"
               />
             </svg>
-            <div>Bet again</div>
+            <div>Guess Again</div>
           </div>
         </button>
         <button
@@ -81,7 +81,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
                 d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
               />
             </svg>
-            <div>Bet higher</div>
+            <div>High Guess</div>
           </div>
         </button>
       </div>

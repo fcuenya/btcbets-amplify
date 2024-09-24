@@ -20,7 +20,8 @@ BetScoreProps) => {
 
   return (
     <div>
-      <div>Total Score: {userScore} points</div>
+      <strong className="text-lg mr-2">Total Score:</strong>
+      <span className="font-mono">{userScore} points</span>
     </div>
   );
 };
