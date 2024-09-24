@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import { Bet, BetStatus, GameState } from "./types.d";
+import { Bet, BetStatus, GameState, Nullable } from "./types.d";
 import useBtcPrice from './useBtcPrice';
+import useServerData from "./useServerData";
 
 const BET_PROCESSING_TIMEOUT = 15000;//60000;
 const BET_RESOLVING_TIMEOUT = 10000;
 
-const useGameState = (): GameState => {
+const useGameState = (): Nullable<GameState> => {
     const btcPrice = useBtcPrice();
+
+    const [isDataLoading, setIsDataLoading] = useState(true);
+    const { fetchUserScore, saveUserScore } = useServerData();
 
     //TODO: load user score
     const [userScore, setUserScore] = useState(0);
@@ -19,6 +23,10 @@ const useGameState = (): GameState => {
     const [betResolvingTimeout, setBetResolvingTimeout] = useState<number>(
         BET_RESOLVING_TIMEOUT
     );
+
+    useEffect(() => {
+        fetchUserScore().then((score) => { setUserScore(score || 0); }).catch(() => { }).finally(() => { setIsDataLoading(false) });
+    }, [fetchUserScore]);
 
     useEffect(() => {
         // TODO: could use a reducer instead?
@@ -44,8 +52,10 @@ const useGameState = (): GameState => {
                             ? BetStatus.WINNER
                             : BetStatus.LOSER
                         setCurrentBet({ ...currentBet, finalPrice: btcPrice });
-                        setUserScore((userScore) => (newBetStatus == BetStatus.WINNER ? (userScore + 1) : (userScore > 0 ? userScore - 1 : 0)));
-                        //TODO: save score to backend                
+                        const newScore = (newBetStatus == BetStatus.WINNER ? (userScore + 1) : (userScore > 0 ? userScore - 1 : 0));
+                        setUserScore(newScore);
+                        //TODO: handle score saving error
+                        saveUserScore(newScore).catch((e) => { console.error(e); });
                         setBetStatus(newBetStatus);
                     }
                     setTimeout(() => { setBetResolvingTimeout(betResolvingTimeout - 1000); }, 1000);
@@ -84,7 +94,7 @@ const useGameState = (): GameState => {
         setBetStatus(BetStatus.READY);
     }
 
-    return {
+    return isDataLoading ? null : {
         userScore, betStatus, btcPrice, betProcessingTimeout, betResolvingTimeout, currentBet, makeBet, resetBet
     }
 };

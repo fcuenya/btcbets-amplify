@@ -1,3 +1,5 @@
+type Nullable<T> = T | null | undefined;
+
 enum BetStatus {
     READY, WINNER, LOSER, PROCESSING, RESOLVING
 }
@@ -19,4 +21,4 @@ type GameState = {
     resetBet: () => void
 };
 
-export { Bet, BetStatus, GameState };
+export { Bet, BetStatus, GameState, Nullable };
