@@ -18,7 +18,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
           disabled={betStatus != BetStatus.READY}
           onClick={() => makeBet(false)}
         >
-          <div className="flex flex-row place-content-center">
+          <div className="flex flex-col items-center gap-y-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -33,7 +33,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
                 d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
               />
             </svg>
-            <div className="ml-1">Low Guess</div>
+            <div>Lower</div>
           </div>
         </button>
         <button
@@ -43,7 +43,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
           disabled={!isBetResolved}
           onClick={() => resetBet()}
         >
-          <div className="flex flex-row place-content-center">
+          <div className="flex flex-col items-center gap-y-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -58,7 +58,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
                 d="M12 4.5v15m7.5-7.5h-15"
               />
             </svg>
-            <div>Guess Again</div>
+            <div>Retry</div>
           </div>
         </button>
         <button
@@ -66,7 +66,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
           disabled={betStatus != BetStatus.READY}
           onClick={() => makeBet(true)}
         >
-          <div className="flex flex-row-reverse place-content-center">
+          <div className="flex flex-col items-center gap-y-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -81,7 +81,7 @@ const BetPicker = ({ betStatus, makeBet, resetBet }: BetPickerProps) => {
                 d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
               />
             </svg>
-            <div>High Guess</div>
+            <div>Higher</div>
           </div>
         </button>
       </div>

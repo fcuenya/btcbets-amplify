@@ -38,14 +38,14 @@ const App = () => {
     switch (betStatus) {
       case BetStatus.PROCESSING:
       case BetStatus.RESOLVING:
-        statusTitle = "Guess in progress...";
+        statusTitle = "In progress...";
         break;
       case BetStatus.WINNER:
-        statusTitle = "You guessed it!";
+        statusTitle = "Congrats, you've got it!";
         textColor = "text-success";
         break;
       case BetStatus.LOSER:
-        statusTitle = "Wrong guess, better luck next time!";
+        statusTitle = "Wrong guess, try again!";
         textColor = "text-error";
         break;
       default:

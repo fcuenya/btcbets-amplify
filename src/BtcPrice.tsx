@@ -64,7 +64,7 @@ const BtcPrice = ({
           className="text-base-content text-center text-lg"
           style={{ transform: currentBet ? "scaleX(-1)" : "scaleX(1)" }}
         >
-          <div className="font-bold mb-0.5">Bitcoin price</div>
+          <div className="font-bold mb-0.5">Current price</div>
           <div
             className={`font-mono text-lg ${isProcessingBet ? "blur-sm" : ""} ${
               isProcessingBet || betStatus == BetStatus.READY
