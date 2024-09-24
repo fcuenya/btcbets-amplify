@@ -23,3 +23,19 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
+
+## TODOs
+
+- Accessibility
+
+- Proper test coverage
+
+  - Vitest (hooks and other logic)
+  - Component tests
+  - E2E
+  - Hook everything to the CI/CD (Amplify hosting)
+
+- Settings panel
+  - Guest mode
+  - Configurable timeout
+  - Dark mode

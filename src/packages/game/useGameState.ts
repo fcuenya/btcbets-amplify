@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Bet, BetStatus, GameState, Nullable } from "./types.d";
-import useBtcPrice from './useBtcPrice';
-import useServerData from "./useServerData";
+import { Bet, BetStatus, GameState, } from "./types.d";
+import { Nullable } from "../core/util/types.d";
+import { useBtcPrice, useServerData } from '../core/data';
 
 const BET_PROCESSING_TIMEOUT = 15000;//60000;
 const BET_RESOLVING_TIMEOUT = 10000;
@@ -12,7 +12,6 @@ const useGameState = (): Nullable<GameState> => {
     const [isDataLoading, setIsDataLoading] = useState(true);
     const { fetchUserScore, saveUserScore } = useServerData();
 
-    //TODO: load user score
     const [userScore, setUserScore] = useState(0);
 
     const [currentBet, setCurrentBet] = useState<Bet>();

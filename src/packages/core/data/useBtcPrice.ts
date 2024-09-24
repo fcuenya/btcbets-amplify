@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
-import { Nullable } from './types.d';
+import { Nullable } from './types.d.d';
 
 const COINBASE_WS_URL = 'wss://ws-feed.exchange.coinbase.com';
 
