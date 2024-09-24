@@ -46,7 +46,7 @@ const useGameState = (): Nullable<GameState> => {
                 // start the bet resolving timeout
                 if (betResolvingTimeout > 0) {
                     // try to resolve the bet
-                    if (currentBet && currentBet?.betPrice != btcPrice) {
+                    if (btcPrice != null && currentBet && currentBet?.betPrice != btcPrice) {
                         const newBetStatus = (btcPrice > currentBet.betPrice && currentBet?.isHigherBet) ||
                             (btcPrice < currentBet.betPrice && !currentBet?.isHigherBet)
                             ? BetStatus.WINNER
