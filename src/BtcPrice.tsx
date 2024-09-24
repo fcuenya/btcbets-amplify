@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
 import { Bet, BetStatus } from "./types.d";
 
 type BtcProps = {
-  btcPrice: number;
+  btcPrice?: number;
   currentBet?: Bet;
   betProcessingTimeout: number;
   betStatus: BetStatus;
@@ -14,20 +13,7 @@ const formatPrice = (price?: number) =>
         style: "currency",
         currency: "USD",
       }).format(price)
-    : null;
-
-const generateRandomPrice = () => Number((Math.random() * 10000).toFixed(2));
-
-const useGarbledPrice = () => {
-  const [garbledPrice, setGarbledPrice] = useState(generateRandomPrice());
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setGarbledPrice(generateRandomPrice());
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-  return garbledPrice;
-};
+    : "--";
 
 const BtcPrice = ({
   btcPrice,
