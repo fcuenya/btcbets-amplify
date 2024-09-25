@@ -85,8 +85,6 @@ const BtcPrice = ({
               </div>
               <div
                 className={`font-mono text-lg ${
-                  betStatus == BetStatus.PROCESSING ? "blur-sm" : ""
-                } ${
                   betStatus == BetStatus.PROCESSING ||
                   betStatus == BetStatus.READY
                     ? "animate-pulse"
