@@ -1,10 +1,14 @@
-import { Bet, BetStatus } from "./types.d";
+import { BET_PROCESSING_TIMEOUT, Bet, BetStatus } from "./types.d";
 
 type BtcProps = {
   btcPrice?: number;
   currentBet?: Bet;
   betProcessingTimeout: number;
   betStatus: BetStatus;
+};
+
+const getPercentComplete = (timeout: number) => {
+  return 100 - timeout / (BET_PROCESSING_TIMEOUT / 100);
 };
 
 const formatPrice = (price?: number) =>
@@ -30,7 +34,6 @@ const getTextColor = (betStatus: BetStatus) => {
 const getProgressColor = (betStatus: BetStatus) => {
   switch (betStatus) {
     case BetStatus.PROCESSING:
-    case BetStatus.RESOLVING:
       return "text-indigo-400";
     case BetStatus.WINNER:
       return "text-success";
@@ -48,24 +51,18 @@ const BtcPrice = ({
   betProcessingTimeout,
   betStatus,
 }: BtcProps) => {
-  //FIXME: parameterize this based off useGameState.BET_PROCESSING_TIMEOUT
-  const percentComplete = 100 - betProcessingTimeout / 150;
-  //TODO: do the rounding here
+  const percentComplete = getPercentComplete(betProcessingTimeout);
   const formattedBetPrice = formatPrice(currentBet?.betPrice);
-  // const garbledPrice = useGarbledPrice();
   const activePrice = formatPrice(currentBet?.finalPrice || btcPrice);
 
   const textColor = getTextColor(betStatus);
   const progressColor = getProgressColor(betStatus);
 
-  const isProcessingBet =
-    betStatus == BetStatus.PROCESSING || betStatus == BetStatus.RESOLVING;
-
   return (
     <div className="flex flex-row place-content-around">
       <div
         className={`radial-progress outline-2 outline-dotted outline-offset-4 ${
-          isProcessingBet ? "outline-neutral" : ""
+          betStatus == BetStatus.PROCESSING ? "outline-neutral" : ""
         } flex ${progressColor} border-neutral border-2 z-10 bg-neutral`}
         style={
           {
@@ -88,9 +85,10 @@ const BtcPrice = ({
               </div>
               <div
                 className={`font-mono text-lg ${
-                  isProcessingBet ? "blur-sm" : ""
+                  betStatus == BetStatus.PROCESSING ? "blur-sm" : ""
                 } ${
-                  isProcessingBet || betStatus == BetStatus.READY
+                  betStatus == BetStatus.PROCESSING ||
+                  betStatus == BetStatus.READY
                     ? "animate-pulse"
                     : ""
                 }`}

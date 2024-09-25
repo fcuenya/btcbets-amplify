@@ -5,7 +5,6 @@ import type { Schema } from "@amplify/data/resource";
 const client = generateClient<Schema>();
 
 const fetchUserScore = async (): Promise<number> => {
-    //TODO: error handling
     try {
         const { userId } = await getCurrentUser();
         return client.models.UserScore.get({ id: userId }).then((result) => {

@@ -1,5 +1,7 @@
+const BET_PROCESSING_TIMEOUT = 60000;
+
 enum BetStatus {
-    READY, WINNER, LOSER, PROCESSING, RESOLVING
+    READY, WINNER, LOSER, PROCESSING
 }
 
 type Bet = {
@@ -9,14 +11,13 @@ type Bet = {
 };
 
 type GameState = {
-    btcPrice: number,
+    btcPrice: Nullable<number>,
     betStatus: BetStatus,
     betProcessingTimeout: number,
-    betResolvingTimeout: number,
     userScore: number,
     currentBet?: Bet,
     makeBet: (isHigherBet: boolean) => void,
     resetBet: () => void
 };
 
-export { Bet, BetStatus, GameState };
+export { BET_PROCESSING_TIMEOUT, Bet, BetStatus, GameState };

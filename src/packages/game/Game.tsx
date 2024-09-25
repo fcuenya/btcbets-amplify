@@ -9,7 +9,6 @@ import GameHelp from "./GameHelp";
 const getStatusTitle = (betStatus: BetStatus): string => {
   switch (betStatus) {
     case BetStatus.PROCESSING:
-    case BetStatus.RESOLVING:
       return "In progress...";
     case BetStatus.WINNER:
       return "Congrats, you've got it!";
@@ -21,8 +20,6 @@ const getStatusTitle = (betStatus: BetStatus): string => {
 };
 
 const Game = () => {
-  //TODO: optimizations
-
   const [isHelpVisible, setIsHelpVisible] = useState(false);
   const gameState = useGameState();
 

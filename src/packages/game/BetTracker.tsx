@@ -17,13 +17,10 @@ const BetTracker = ({
   userScore,
   currentBet,
 }: BetTrackerProps) => {
-  //TODO: optimizations
-
   let statusTitle = "";
   let textColor = "";
   switch (betStatus) {
     case BetStatus.PROCESSING:
-    case BetStatus.RESOLVING:
       statusTitle = "In progress...";
       break;
     case BetStatus.WINNER:
