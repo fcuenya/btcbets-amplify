@@ -31,7 +31,7 @@ To enable this mode, follow these steps:
 2. Install its dependencies via `npm run i`.
 3. Add a file to the root of the project named `env.local`. The contents of this file should be `VITE_AMPLIFY_DISABLED=true`
 4. Start the application via `npm run dev`.
-5. Open http://localhost:5173 (or the address shown in your console) in your web browser to see the app.
+5. Open http://localhost:5173 (or the address shown in your terminal) in your web browser to see the app.
 
 ### AWS deployment
 
