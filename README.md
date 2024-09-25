@@ -1,6 +1,6 @@
-# Bitcoin Guess Game
+# Bitcoin Guessing Game
 
-This is a web application that implements the Bitcoin guess game. It consists on guessing the USD market price of Bitcoin in the next 60s. These are the rules:
+This is a web application that implements a game consisting of guessing the USD market price of Bitcoin in the next 60 seconds. These are the rules:
 
 - The player can at all times see their current score and the latest available BTC price in USD.
 - The player can choose to enter a guess of either “up” or “down“.
