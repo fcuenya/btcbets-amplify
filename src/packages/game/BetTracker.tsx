@@ -17,23 +17,6 @@ const BetTracker = ({
   userScore,
   currentBet,
 }: BetTrackerProps) => {
-  let statusTitle = "";
-  let textColor = "";
-  switch (betStatus) {
-    case BetStatus.PROCESSING:
-      statusTitle = "In progress...";
-      break;
-    case BetStatus.WINNER:
-      statusTitle = "Congrats, you've got it!";
-      textColor = "text-success";
-      break;
-    case BetStatus.LOSER:
-      statusTitle = "Wrong guess, try again!";
-      textColor = "text-error";
-      break;
-    default:
-      statusTitle = "Guess the next Bitcoin price!";
-  }
   return (
     <div className="flex flex-col place-content-center">
       <div className="flex flex-row place-content-center m-10">
