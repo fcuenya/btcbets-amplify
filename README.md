@@ -19,7 +19,7 @@ The provided solution also took into consideration the following requirements:
 
 ## Getting started
 
-There is an instance of the app deployed to AWS and available at . In any case, below are the instructions for running it both locally and in the cloud.
+There is an instance of the app up and running on AWS available [here](https://main.dpncvy8dw2nph.amplifyapp.com/), and below are the instructions for running it both locally and in the cloud.
 
 ### Local run
 
